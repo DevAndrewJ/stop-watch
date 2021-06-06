@@ -32,24 +32,22 @@
         const resetBtn = document.querySelector('[data-action="reset"]');
         const minutes  = document.querySelector('.minutes'); 
         const seconds  = document.querySelector('.seconds'); 
-        let timerCount = 56;
+        let timerCount = 00;
+        let isRunning = false;
+        let interval;
 
-       setInterval(function(){
-           timerCount++;
-
-           const numOfM = Math.floor(timerCount / 60);
-           const numOfS = timerCount % 60;
-
-           minutes.innerText = pad(numOfM);
-           seconds.innerText = pad(numOfS);
-       },1000);
 
         startTimer = ()=>{
-
+            if(isRunning) return;
+            isRunning = true;
+            interval = setInterval(incrementTimer, 1000);
+        
         }
 
         stopTimer = () => {
-
+            if(!isRunning) return;
+            isRunning = false;
+            clearInterval(interval);
         }
 
         resetTimer = () => {
@@ -67,6 +65,18 @@
             //     return number;
             // }
         }
+
+        incrementTimer = () => {
+
+        timerCount++;
+
+        const numOfM = Math.floor(timerCount / 60);
+        const numOfS = timerCount % 60;
+
+        minutes.innerText = pad(numOfM);
+        seconds.innerText = pad(numOfS);
+    }
+
 
 
         startBtn.addEventListener('click',startTimer);
