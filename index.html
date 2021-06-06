@@ -40,8 +40,8 @@
            const numOfM = Math.floor(timerCount / 60);
            const numOfS = timerCount % 60;
 
-           minutes.innerText = numOfM;
-           seconds.innerText = numOfS;
+           minutes.innerText = pad(numOfM);
+           seconds.innerText = pad(numOfS);
        },1000);
 
         startTimer = ()=>{
@@ -54,6 +54,16 @@
 
         resetTimer = () => {
 
+        }
+
+        pad = (number) => {
+
+            if(number < 10){
+                return '0' + number;
+            }
+            else{
+                return number;
+            }
         }
 
 
