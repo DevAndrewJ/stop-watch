@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <style>
+        body, jumbotron {padding: 30px;}
+        .timer { font-size:  50px;}
+    </style>
+    <title>Stop Watch</title>
+</head>
+<body>
+
+    <div class="jumbotron text-center">
+        <div class="timer">
+            <span class="minutes">00</span> : <span class="seconds">00</span>
+        </div>
+
+        <div class="timer-btn">
+            <button class="btn btn-lg btn-success" data-action="start">Start</button>
+            <button class="btn btn-lg btn-danger" data-action="stop">Stop</button>
+            <button class="btn btn-lg btn-dark"data-action="reset">Reset</button>
+            
+        </div>
+    </div>
+
+
+    <script>
+        const startBtn = document.querySelector('[data-action="start"]');
+        const stopBtn  = document.querySelector('[data-action="stop"]');
+        const resetBtn = document.querySelector('[data-action="reset"]');
+        const minutes  = document.querySelector('.minutes'); 
+        const seconds  = document.querySelector('.seconds'); 
+        let timerCount = 56;
+
+       setInterval(function(){
+           timerCount++;
+
+           const numOfM = Math.floor(timerCount / 60);
+           const numOfS = timerCount % 60;
+
+           minutes.innerText = numOfM;
+           seconds.innerText = numOfS;
+       },1000);
+
+        startTimer = ()=>{
+
+        }
+
+        stopTimer = () => {
+
+        }
+
+        resetTimer = () => {
+
+        }
+
+
+        startBtn.addEventListener('click',startTimer);
+        stopBtn.addEventListener('click',stopTimer);
+        resetBtn.addEventListener('click',resetTimer);
+    </script>
+    
+</body>
+</html>
